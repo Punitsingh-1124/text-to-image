@@ -1,60 +1,19 @@
-// document.getElementById("generateBtn").addEventListener("click", async function(){
-
-
-//     let token =''
-//     let input = document.getElementById("textInput");
-//     let imageContainer = document.getElementById("imageContainer");
-
-//     async function generateImage(data) {
-//         const response = await fetch(
-//             "https://router.huggingface.co/hf-inference/models/stabilityai/stable-diffusion-xl-base-1.0",
-//             {
-//                 headers: {
-//                     Authorization: `Bearer ${token}`,
-//                     // "Content-Type": "application/json",
-//                 },
-//                 method: "POST",
-//                 body: JSON.stringify({ "inputs": input }),
-//             }
-//         );
-//         console.log(response);
-//         const result = await response.blob();
-//         return result;
-//         if(!response.ok){
-//             throw new Error("API error");
-//         }
-
-
-
-
-//         try {
-//             let imagelob = await generateImage(input);
-//             let imageUrl = URL.createObjectURL(imagelob);
-//             imageContainer.innerHTML = `<img src ="${imageUrl}"class = "mx-auto rounded-lg shadow-lg" />`
-
-
-//         } catch (error) {console.error("Error generating images:", error);
-//         }
-//     }
-
-//     // generateImage().then((response) => {
-//     //     // Use image
-//     // });
-// });
-
-
+// Add an event listener to the button with ID "generateBtn" that triggers on click
 document.getElementById("generateBtn").addEventListener("click", async function () {
-    
+
+    // Initialize an empty token variable for API authorization login in website and get Acces key
     let token = '';
     let input = document.getElementById("textInput").value.trim();
     let imageContainer = document.getElementById("imageContainer");
     let downloadBtn = document.getElementById("downloadBtn")
 
+    // Check if the input is empty
     if (!input) {
         alert("Please enter a prompt for the image!");
         return;
     }
 
+    // Define an asynchronous function to generate an image
     async function generateImage(data) {
         try {
             const response = await fetch(
@@ -83,11 +42,13 @@ document.getElementById("generateBtn").addEventListener("click", async function 
     }
 
     try {
+        // Call the generateImage function with the user input and await the result
         let imageBlob = await generateImage(input);
         if (imageBlob) {
             let imageUrl = URL.createObjectURL(imageBlob);
             imageContainer.innerHTML = `<img src="${imageUrl}" class="mx-auto rounded-lg shadow-lg mt-5" />`;
 
+            // Create a new button for downloading the image
             const downloadBtn = document.createElement('button');
             downloadBtn.innerHTML = "Download Imaage"
             downloadBtn.classList.add('mt-5','w-full','bg-blue-500','rounded-lg','px-6','py-6')
