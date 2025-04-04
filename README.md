@@ -18,9 +18,9 @@ The application sends the prompt to the Stable Diffusion API and retrieves the g
 The image is displayed on the page, and a download button appears for users to save the image.
 
 #Technologies Used
-HTML
-CSS (with Tailwind CSS for styling)
-JavaScript (for functionality and API interaction)
+HTML,
+CSS (with Tailwind CSS for styling),
+JavaScript (for functionality and API interaction),
 Fetch API (for making requests to the image generation API)
 
 #DEMO:
